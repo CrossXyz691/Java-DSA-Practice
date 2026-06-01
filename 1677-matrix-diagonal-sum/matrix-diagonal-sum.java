@@ -1,23 +1,23 @@
 class Solution {
     public int diagonalSum(int[][] mat) {
-         
+         int n=mat.length;
         int primarySum = 0;
         int secondarySum = 0;
 
-        for (int i = 0; i < mat.length; i++) {
+        for (int i = 0; i < n; i++) {
         
             primarySum += mat[i][i];
 
             
-            secondarySum += mat[i][mat.length - 1 - i];
+            secondarySum += mat[i][n - 1 - i];
         }
 
         
         
         
         int totalSum = primarySum + secondarySum;
-        if (mat.length % 2 != 0) {
-            totalSum -= mat[ mat.length/ 2][ mat.length/ 2];
+        if (n % 2 != 0) {
+            totalSum -= mat[ n/ 2][ n/ 2];
         }
         return totalSum;
     }
