@@ -12,8 +12,7 @@ class Solution {
             secondarySum += mat[i][n - 1 - i];
         }
 
-        System.out.println("Sum of Primary Diagonal: " + primarySum);
-        System.out.println("Sum of Secondary Diagonal: " + secondarySum);
+        
         
         
         int totalSum = primarySum + secondarySum;
