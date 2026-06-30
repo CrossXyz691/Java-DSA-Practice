@@ -6,10 +6,10 @@ class Solution {
     
 
     // Get the floored square root
-    long root = (long) Math.floor(Math.sqrt(x));
+    int root = (int) Math.floor(Math.sqrt(x));
 
     
     
-    return (int) Math.clamp(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    return root;
 }
 }
