@@ -1,15 +1,24 @@
 class Solution {
-    public static int[] sortArrayByParity(int[] nums) {
-        Arrays.sort(nums);
-        int count = 0;
+    public static int[] sortArrayByParity(int[] arr) {
+        int n =arr.length;
+        int l = 0;
+        int r = n- 1;
 
-        for (int i = 0; i < nums.length; i++) {
-            if(nums[i]%2 == 0){
-                swap(nums, i, count);
-                count++;
+        while (l < r) {
+            if (arr[l] % 2 == 0) {
+                l++;
+            }
+            else if (arr[r] % 2 == 1) {
+                r--;
+            }
+            else {
+                swap(arr, l, r);
+
+                l++;
+                r--;
             }
         }
-        return nums;
+        return arr;
     }
 
     static void swap(int[] nums, int first, int second){
