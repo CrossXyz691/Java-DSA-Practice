@@ -1,35 +1,32 @@
 class Solution {
     public int romanToInt(String s) {
-          String[] temp = s.split("(?<=(.))(?!\\1)");
-        int[] nums = new int[temp.length];
 
-        for (int i = 0; i < temp.length; i++) {
-            String value = temp[i];
-            int  count = value.length();
-            switch(value.charAt(0)) {
-                case 'I' -> nums[i] = 1 * count;
-                case 'V' -> nums[i] = 5 * count;
-                case 'X' -> nums[i] = 10 * count;
-                case 'L' -> nums[i] = 50 * count;
-                case 'C' -> nums[i] = 100 * count;
-                case 'D' -> nums[i] = 500 * count;
-                case 'M' -> nums[i] = 1000 * count;
-                default -> nums[i] = -1;
+        int total = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            int value = getValue(s.charAt(i));
+
+            if (i < s.length() - 1 && value < getValue(s.charAt(i + 1))) {
+                total -= value;
+            } else {
+                total += value;
             }
         }
 
-        int sum = 0;
-            for (int i = 0; i < nums.length; i++) {
-                if(i != nums.length-1 && nums[i] < nums[i+1]){
-                    int tempsum = nums[i+1] - nums[i];
-                    sum += tempsum;
-                    i++;
-                }
-                else {
-                    sum += nums[i];
-                }
-            }
+        return total;
+    }
 
-        return sum;
+    public int getValue(char ch) {
+        switch (ch) {
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+        }
+        return 0;
     }
 }
