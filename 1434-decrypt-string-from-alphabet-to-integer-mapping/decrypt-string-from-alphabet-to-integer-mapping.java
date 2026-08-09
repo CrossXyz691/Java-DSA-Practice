@@ -1,30 +1,28 @@
 class Solution {
     public String freqAlphabets(String s) {
-      StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < s.length(); i++) {
-            if(i+2<s.length() && s.charAt(i+2) != '#'){
-                char o = s.charAt(i) ;
-                char sa = (char) ((o - '0') + 96);
-                sb.append(sa);
-            }
-            else if(i+2<s.length() && s.charAt(i+2) == '#'){
+      StringBuilder ans = new StringBuilder();
+
+        for (int i = s.length()-1; i >= 0; i--) {
+            if(s.charAt(i) == '#'){
+                i--;
                 StringBuilder num = new StringBuilder();
+                num.append(s.charAt(i-1));
                 num.append(s.charAt(i));
-                num.append(s.charAt(i+1));
 
                 String temp = num.toString();
-                int nums = Integer.parseInt(temp);
-                char sa = (char) (nums + 96);
-                sb.append(sa);
-                i+=2;
+                int ok = Integer.parseInt(temp);
+                char ok11 = (char)(ok + 96);
+                ans.append(ok11);
+                i--;
             }
 
             else{
                 char o = s.charAt(i) ;
                 char sa = (char) ((o - '0') + 96);
-                sb.append(sa);
+                ans.append(sa);
             }
         }
-        return sb.toString();  
+        ans.reverse();
+        return ans.toString(); 
     }
 }
