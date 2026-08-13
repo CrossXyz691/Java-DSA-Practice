@@ -1,19 +1,16 @@
 class Solution {
     public void reverseString(char[] s) {
-        System.out.println(Arrays.toString(rS(s, 0, s.length-1)));
-    }
+        int left = 0;
+        int right = s.length - 1;
 
-    static char[] rS(char[] st, int s, int e){
-        if(s > e){
-            return st;
+        while (left < right) {
+            // Swap characters
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+
+            left++;
+            right--;
         }
-
-        char temp = st[s];
-        st[s] = st[e];
-        st[e] = temp;
-        s++;
-        e--;
-        return rS(st, s, e);
     }
-    
 }
