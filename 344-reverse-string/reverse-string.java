@@ -8,15 +8,12 @@ class Solution {
             return st;
         }
 
-        swap(st, s, e);
+        char temp = st[s];
+        st[s] = st[e];
+        st[e] = temp;
         s++;
         e--;
         return rS(st, s, e);
     }
-
-    static void swap(char[] nums, int first, int second){
-        char temp = nums[first];
-        nums[first] = nums[second];
-        nums[second] = temp;
-    }
+    
 }
